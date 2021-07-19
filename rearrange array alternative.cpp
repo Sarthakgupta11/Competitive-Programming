@@ -5,23 +5,27 @@ class Solution{
     // arr: input array
     // n: size of array
     //Function to rearrange  the array elements alternately.
-    void rearrange(long long *arr, long long n) 
+        void rearrange(long long *a, long long n) 
     { 
-    	int b[n];
-    	int j=n-1,x=0;
+        int maxind=n-1,minind=0;
+        int maxele=a[n-1]+1;
     	for( int  i=0;i<n;i++)
     	{
     	    if(i%2==0)
     	    {
-    	    b[i]=arr[j--];
+    	    a[i]=a[i]+(a[maxind]%maxele)*maxele;
+    	    maxind--;
     	    }
     	    else
     	    {
-    	    b[i]=arr[x++];
+    	        a[i]=a[i]+(a[minind]%maxele)*maxele;
+    	        minind++;
     	    }
     	}
     	for(int i=0;i<n;i++)
-    	arr[i]=b[i];
+    	a[i]=a[i]/maxele;
+    	
     	 
     }
 };
+
